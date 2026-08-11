@@ -18,10 +18,12 @@ app.js
 
 const express = require("express");
 const cors = require("cors");
-const { errorHandler } = require("./middleware/errorHandler");
-const { authMiddleware } = require("./middleware/authMiddleware");
-const { userRoutes } = require("./routes/userRoutes");
-const { messageRoutes } = require("./routes/messageRoutes");
+const { errorHandler } = require("./middlewares/error.middleware");
+const { authMiddleware } = require("./middlewares/auth.middleware");
+
+const { userRoutes } = require("./routes/users");
+const { messageRoutes } = require("./routes/messages");
+const { channelRoutes } = require("./routes/channels");
 
 const app = express();
 
@@ -37,7 +39,7 @@ app.use(authMiddleware);
 // routes
 app.use("/api/users", userRoutes);
 app.use("/api/messages", messageRoutes);
-
+app.use("/api/channels", channelRoutes);
 // error handler
 app.use(errorHandler);
 
