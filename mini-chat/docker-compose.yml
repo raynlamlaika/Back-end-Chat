@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:16-alpine
     container_name: minichat-db
-    restart: unless-stopped
+    restart: on-failure
     env_file: 
       .env
     ports:
