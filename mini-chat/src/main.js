@@ -46,7 +46,6 @@ async function signup(req, res) {
                 message: "Email already exists"
             });
         }
-
         const result = await pool.query(
             `INSERT INTO users
                 (username, email, password_hash)
